@@ -362,7 +362,6 @@ export default {
         //   return '<span class="' + className + '">' + text + '</span>'
         // }
         renderCustom: function (swiper, current, total) {
-          console.log(current, total)
           var _html = ''
           let text = ''
           for (let i = 1; i <= total; i++) {
