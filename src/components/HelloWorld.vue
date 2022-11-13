@@ -322,7 +322,6 @@ export default {
       isExpend: false
     }
   },
-  created() {},
   mounted() {
     let mySwiper = new Swiper('.swiper-container', {
       direction: 'horizontal', // 垂直切换选项
@@ -536,6 +535,9 @@ body > .el-container {
       text-align: center;
       // border: 1px solid red;
     }
+  }
+  .swiper-pagination /deep/ .active {
+    border-bottom: 4px solid #0090ff;
   }
   // < 轮播图切换按钮
   .swiper-button-prev {
