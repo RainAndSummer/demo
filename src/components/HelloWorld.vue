@@ -330,7 +330,7 @@ export default {
       autoplay: {
         delay: 3000,
         stopOnLastSlide: false,
-        disableOnInteraction: true
+        disableOnInteraction: false
       },
 
       // 如果需要分页器
@@ -362,10 +362,11 @@ export default {
         //   return '<span class="' + className + '">' + text + '</span>'
         // }
         renderCustom: function (swiper, current, total) {
+          console.log(current, total)
           var _html = ''
           let text = ''
-          for (var i = 1; i <= total; i++) {
-            switch (i + 1) {
+          for (let i = 1; i <= total; i++) {
+            switch (i) {
               case 1:
                 text = '第四届追梦营'
                 break
@@ -383,9 +384,13 @@ export default {
                 break
             }
             if (current == i) {
-              _html += `<li class="swiper-pagination-custom active" value=${i}>${text}</li>`
+              _html += `<li class="swiper-pagination-custom active" value=${
+                i - 1
+              }>${text}</li>`
             } else {
-              _html += `<li class="swiper-pagination-custom" value=${i}>${text}</li>`
+              _html += `<li class="swiper-pagination-custom" value=${
+                i - 1
+              }>${text}</li>`
             }
           }
           return _html //返回所有的页码html
