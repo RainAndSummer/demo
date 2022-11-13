@@ -134,7 +134,7 @@
           <div>
             <img src="../assets/QQ截图20221112235440.png" alt />
           </div>
-          <div v-show="isExpend">
+          <div class="maodian-isExpend" style="display: none">
             <ul>
               <li>
                 <a href="#shiyanshi">
@@ -408,9 +408,7 @@ export default {
   methods: {
     changePage(mySwiper) {
       $('.swiper-pagination').on('click', 'li', function (e) {
-        console.log(e)
         var index = e.target.value
-        console.log(index)
         mySwiper.slideTo(index, 500, false) //切换到第一个slide，速度为1秒
       })
     },
@@ -430,12 +428,14 @@ export default {
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop
-        scrollTop >= 300 ? (this.isExpend = true) : (this.isExpend = false)
+        // scrollTop >= 300 ? (this.isExpend = true) : (this.isExpend = false)
         let maodian = document.querySelector('.maodian')
         if (scrollTop >= 300) {
           maodian.style.top = '100px'
+          $('.maodian-isExpend').fadeIn('slow')
         } else {
-          maodian.style.top = '250px'
+          maodian.style.top = '350px'
+          $('.maodian-isExpend').fadeOut('slow')
         }
       })
     }
@@ -671,6 +671,7 @@ body > .el-container {
     animation-name: toRedius;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
   }
 }
 @keyframes toRedius {
@@ -678,14 +679,15 @@ body > .el-container {
     border-radius: 12px;
   }
   50% {
-    border-radius: 20px;
+    border-radius: 24px;
     width: 40px;
     height: 40px;
   }
+
   100% {
     border-radius: 24px;
-    width: 42px;
-    height: 42px;
+    width: 41px;
+    height: 41px;
   }
 }
 .right-content {
